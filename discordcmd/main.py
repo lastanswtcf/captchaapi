@@ -7,7 +7,7 @@ from PIL import Image
 
 @bot.command(name='captcha')
 async def generate_captcha(ctx):
-    api_url = 'http://localhost:5000/api/generate_captcha'
+    api_url = 'linkapi'
 
     async with aiohttp.ClientSession() as session:
         try:
