@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>captcha</title>
+</head>
+<body>
+    <div class="container">
+        <h1>senapi captcha</h1>
+        <button id="generate-btn">generate captcha image</button>
+        
+        <div class="captcha-container">
+            <img id="captcha-image" alt="captcha will appear here">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generate-btn').addEventListener('click', async () => {
+            try {
+                const response = await fetch('/api/generate_captcha');
+                const data = await response.json();
+                document.getElementById('captcha-image').src = data.captcha_data;
+            } catch (error) {
+                console.error('error generating captcha:', error);
+            }
+        });
+    </script>
+</body>
+</html>
